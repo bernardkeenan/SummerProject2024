@@ -1,0 +1,126 @@
+﻿/* Base styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+}
+
+.header__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.header__toggle {
+    font-size: 2rem;
+    cursor: pointer;
+    display: none;
+}
+
+/* Navigation styling */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.nav__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav__close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+.nav__perfil {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.nav__img img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.nav__name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav__profesion {
+    color: #bbb;
+}
+
+.nav__menu {
+    margin-bottom: 2rem;
+}
+
+.nav__list {
+    list-style: none;
+}
+
+.nav__item {
+    margin-bottom: 1rem;
+}
+
+.nav__link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.25rem;
+    transition: color 0.3s;
+}
+
+    .nav__link:hover, .nav__link.active {
+        color: #f0a500;
+    }
+
+.nav__social {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav__social-icon {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .header__toggle {
+        display: block;
+    }
+}
