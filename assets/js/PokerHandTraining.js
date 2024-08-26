@@ -1,4 +1,8 @@
-// String formatter
+document.getElementById('backButton').addEventListener('click', () => {
+    window.location.href = 'menu.html'; // Redirect to menu.html
+});
+
+
 String.prototype.format = function () {
     var args = arguments;
     return this.replace(/{(\d+)}/g, function (match, number) {
@@ -22,33 +26,24 @@ var correct = 0;
 var streak = 0;
 var timeAvg = 0;
 
-var fileReader;
-
 function onLoad() {
-    // Push default cards onto array
+    // Initialize default cards with image paths
     cards.push({
-        answer: 'Rock',
-        text: 'Scissors'
+        answer: 'raise',
+        image: 'image/rock.png' // Replace with actual image path
     });
 
     cards.push({
-        answer: 'Paper',
-        text: 'Rock'
+        answer: 'check',
+        image: 'images/paper.png' // Replace with actual image path
     });
 
     cards.push({
-        answer: 'Scissors',
-        text: 'Paper'
+        answer: 'fold',
+        image: 'images/scissors.png' // Replace with actual image path
     });
 
-    // Init file reader
-    fileReader = new FileReader();
-    fileReader.onload = function (loadEvent) {
-        document.getElementById('flashcard-image').src
-            = loadEvent.target.result;
-    };
-
-    // Populate row of buttons based on array
+    // Populate the row of buttons based on array
     populateButtons();
     populateEditDialog();
 }
@@ -64,7 +59,7 @@ function reset() {
     document.getElementById('record').innerHTML = 'Correct: 0/0 (0%)';
     document.getElementById('streak').innerHTML = 'Streak: 0';
     document.getElementById('avg-time').innerHTML = 'Average time: 0s';
-    document.getElementById('flashcard-text').innerHTML = '';
+    document.getElementById('flashcard-image').src = ''; // Clear image
 }
 
 window.onkeydown = function (e) {
@@ -120,8 +115,6 @@ function populateEditDialog() {
         'ondrop="onDragDrop(event, {0})">\n' +
         '    Answer: <input value="{1}" ' +
         'onchange="updateCardAnswer({0}, this.value)"><br>\n' +
-        '    Question text: <input value="{2}" ' +
-        'onchange="updateCardText({0}, this.value)"><br>\n' +
         '    Question image: <input type="file" ' +
         'onchange="updateCardImage(event, {0})"><br>\n' +
         '    <input type="button" value="Remove" ' +
@@ -133,13 +126,13 @@ function populateEditDialog() {
 
     for (var i = 0; i < cards.length; i++)
         entries.innerHTML += TEMPLATE.format(
-            i, cards[i].answer, cards[i].text);
+            i, cards[i].answer, cards[i].image);
 }
 
 function addCard() {
     cards.splice(cards.length, 0, {
         answer: '',
-        text: ''
+        image: ''
     });
 
     populateButtons();
@@ -158,15 +151,14 @@ function updateCardAnswer(id, newString) {
     populateEditDialog();
 }
 
-function updateCardText(id, newString) {
-    cards[id].text = newString;
-    populateButtons();
-    populateEditDialog();
-}
-
 function updateCardImage(event, id) {
     var file = event.target.files[0];
-    cards[id].image = file;
+    var reader = new FileReader();
+    reader.onload = function (loadEvent) {
+        cards[id].image = loadEvent.target.result;
+        populateEditDialog();
+    };
+    reader.readAsDataURL(file);
 }
 
 function onDragStart(event, id) {
@@ -193,21 +185,14 @@ function onDragDrop(event, id) {
 }
 
 function flash() {
-    var text = document.getElementById('flashcard-text');
     var image = document.getElementById('flashcard-image');
 
     activeCard = Math.floor(Math.random() * cards.length);
 
-    // UI
-    if (cards[activeCard].image) {
-        fileReader.readAsDataURL(cards[activeCard].image);
-        text.innerHTML = '';
-    } else {
-        image.src = '';
-        text.innerHTML = cards[activeCard].text;
-    }
+    // Display the image of the active card
+    image.src = cards[activeCard].image;
 
-    document.getElementById('message').innerHTML = 'Press a button!'
+    document.getElementById('message').innerHTML = 'Press a button!';
 
     if (document.getElementById('sound').checked)
         new Audio('sound/flash.wav').play();
@@ -244,36 +229,14 @@ function onClickStart() {
     // If we're (not) starting...
     if (started) {
         flash();
-        start.value = 'Stop';
+        startButton.value = 'Stop';
     } else {
         clearInterval(timerEvent);
         clearInterval(waitEvent);
         enabled = false;
-        start.value = 'Start';
+        startButton.value = 'Start';
         message.innerHTML = 'Click "Start"!';
     }
-}
-
-function openEditDialog() {
-    document.getElementById('edit-dialog').style.visibility = 'visible';
-}
-
-function showEditCards() {
-    document.getElementById('edit-cards-pane').style.display
-        = 'inline';
-    document.getElementById('edit-settings-pane').style.display
-        = 'none';
-}
-
-function showSettings() {
-    document.getElementById('edit-cards-pane').style.display
-        = 'none';
-    document.getElementById('edit-settings-pane').style.display
-        = 'inline';
-}
-
-function closeEditDialog() {
-    document.getElementById('edit-dialog').style.visibility = 'hidden';
 }
 
 function onClickButton(id) {
@@ -294,45 +257,41 @@ function onClickButton(id) {
     if (!enabled)
         return;
 
+    // Stop the timer
     clearInterval(timerEvent);
-
-    // Disable further input from the buttons
     enabled = false;
 
-    // Stats that update regardless of correct answer
-    answered++;
-    timeAvg = (timeAvg + time) / answered;
-
-    // If correct button (not) pressed, update necessary stats/elements
-    if (id == activeCard) {
+    // If incorrect, display an error message and return
+    if (cards[id].answer !== cards[activeCard].answer) {
+        message.innerHTML = 'Incorrect!';
+        streak = 0;
+    } else {
+        message.innerHTML = 'Correct!';
         correct++;
         streak++;
-        message.innerHTML = 'Correct!';
 
-        if (soundEnable.checked)
-            new Audio('sound/correct.wav').play();
-
-        if (backgroundEnable.checked)
-            document.body.style.background = '#9f9';
-    } else {
-        streak = 0;
-        message.innerHTML = 'Incorrect, try again! (answer: {0})'
-            .format(cards[activeCard].answer);
-
-        if (soundEnable.checked)
-            new Audio('sound/wrong.wav').play();
+        // Update average time
+        timeAvg = (timeAvg * answered + time) / (answered + 1);
+        timeAvgMessage.innerHTML = TIME_AVG_TEMPLATE.format(
+            (timeAvg / 1000).toFixed(2));
 
         if (backgroundEnable.checked)
-            document.body.style.background = '#f99';
+            document.body.style.background = '#b3ffb3';
     }
 
-    // Update HTML elements containing stats
-    recordMessage.innerHTML = CORRECT_TEMPLATE.format(correct, answered,
-        parseInt(correct * 10000 / answered) / 100);
-    streakMessage.innerHTML = STREAK_TEMPLATE.format(streak);
-    timeAvgMessage.innerHTML = TIME_AVG_TEMPLATE.format(
-        parseInt(timeAvg) / 1000);
+    // Increment answered counter
+    answered++;
 
-    // Wait 1 second before flashing the next card
+    // Update streak and record
+    recordMessage.innerHTML = CORRECT_TEMPLATE.format(
+        correct, answered, (100 * correct / answered).toFixed(0));
+    streakMessage.innerHTML = STREAK_TEMPLATE.format(streak);
+
+    // Play sound
+    if (soundEnable.checked) {
+        new Audio('sound/correct.wav').play();
+    }
+
+    // Automatically flash the next card after a short delay
     waitEvent = setTimeout(flash, 1000);
 }

@@ -1,0 +1,123 @@
+﻿body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Optional: To see the alignment clearly */
+}
+
+.table-container {
+    position: relative;
+    width: 900px; /* Match the poker table image width */
+    height: 500px; /* Match the poker table image height */
+}
+
+.poker-table-image {
+    width: 100%;
+    height: 100%;
+}
+
+.guess-container {
+    position: fixed; /* Keep it fixed at the bottom */
+    bottom: 0; /* Align to the bottom of the screen */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    display: flex;
+    flex-direction: column; /* Stack feedback and buttons vertically */
+    align-items: center; /* Center align items */
+    gap: 10px; /* Space between feedback and buttons */
+    padding: 10px; /* Padding from the bottom of the screen */
+    background-color: rgba(255, 255, 255, 0.9); /* Background for visibility */
+    width: 100%; /* Ensure it spans the full width of the screen */
+    max-width: 900px; /* Match the poker table width */
+}
+
+.button-wrapper {
+    display: flex; /* Align buttons horizontally */
+    flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px; /* Add space from the feedback element */
+}
+
+.guess-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px; /* Add margin for spacing */
+}
+
+    .guess-button:hover {
+        background-color: #2980b9;
+    }
+
+    .guess-button.correct {
+        background-color: #2ecc71;
+    }
+
+    .guess-button.incorrect {
+        background-color: #e74c3c;
+    }
+
+.feedback {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+    .feedback.correct {
+        color: #2ecc71;
+    }
+
+    .feedback.incorrect {
+        color: #e74c3c;
+    }
+
+.player {
+    position: absolute;
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    display: flex;
+    justify-content: center; /* Center horizontally within the player div */
+    align-items: center; /* Center vertically within the player div */
+}
+
+.position-label {
+    font-size: 12px;
+    color: white; /* Text color for position names */
+    text-align: center;
+}
+
+.correct {
+    border: 2px solid #2ecc71; /* Green border for correct positions */
+    background-color: rgba(46, 204, 113, 0.2); /* Light green background */
+}
+
+.incorrect {
+    border: 2px solid #e74c3c; /* Red border for incorrect positions */
+    background-color: rgba(231, 76, 60, 0.2); /* Light red background */
+}
+
+.position-img {
+    width: 100%; /* Fit within the player div */
+    height: 100%; /* Fit within the player div */
+}
+
+.chip {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center based on its own size */
+    background-color: gold; /* Example styling for the chip */
+    border-radius: 50%; /* Example styling for a circular chip */
+    padding: 5px 10px; /* Example padding */
+    color: white; /* Example text color */
+    font-weight: bold; /* Example text styling */
+}

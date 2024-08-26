@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Blind Training</title>
+    <link rel="stylesheet" href="css/BigBlindTraining.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Back Button -->
+        <button id="backButton" class="btn">Back to menu</button>
+
+        <div id="difficultySelection">
+            <h1>Select Difficulty</h1>
+            <button id="easy" class="btn difficulty-btn">Easy</button>
+            <button id="medium" class="btn difficulty-btn" disabled>Medium</button>
+            <button id="hard" class="btn difficulty-btn" disabled>Hard</button>
+        </div>
+
+        <div id="gameSection" style="display: none;">
+            <h1>Big Blind Training</h1>
+            <h2>Big Blind: <span id="BigBlind"></span></h2>
+            <h2>Chip Stack: <span id="ChipStack"></span></h2>
+            <p>Time Remaining: <span id="timer"></span> seconds</p>
+            <div>
+                <label for="userAnswer">Enter your answer:</label>
+                <input type="text" id="userAnswer">
+                <button id="submitButton" class="btn">Submit</button>
+            </div>
+            <p id="feedback"></p>
+            <p>Question Number: <span id="questionCount">0</span></p>
+            <p>Average Time Per Question: <span id="avgTime">0</span> seconds</p>
+        </div>
+
+        <!-- Training Results Section -->
+        <div id="resultsSection" style="display: none;">
+            <h2>Training Results</h2>
+            <p id="resultCorrectAnswers">Correct Answers: </p>
+            <p id="resultAverageTime">Average Time Per Question: </p>
+        </div>
+    </div>
+
+    <!-- Link to JavaScript file -->
+    <script src="assets/js/BigBlindTraining.js"></script>
+</body>
+</html>

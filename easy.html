@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Difficulty</title>
+    <link rel="stylesheet" href="css/game.css">
+</head>
+    
+<body>
+    <h1><button id="backButton">Back</button></h1>
+    <div class="game-container">
+        <img class="poker-table-image" src="assets/img/pokerTable.jpg" alt="Poker Table">
+        <div class="table-container"></div>
+        <div class="guess-container">
+            <div class="timer" id="timer"></div>
+            <div class="question-number" id="questionNumber"></div>
+            <div class="feedback" id="feedback"></div>
+            <div class="button-wrapper" id="buttonWrapper"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/game.js"></script>
+    <script>
+        // Pass difficulty level to the script
+        document.addEventListener('DOMContentLoaded', () => {
+            // Call startGame with the specific difficulty
+            startGame('Easy');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Speedcard: Flashcard Trainer
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/PokerHandTraining.css">
+    <script type="text/javascript" src="asset/scripts/PokerHandTraining.js"></script>
+</head>
+
+<body onload="onLoad()">
+    <!-- Ensured onLoad is correctly spelled -->
+    <div class="container">
+        <!-- Back Button -->
+        <button id="backButton" class="btn">Back to menu</button>
+
+        <div id="upper-pane">
+            <div id="left-container">
+                <ul id="stats">
+                    <li id="timer">Time: 0s</li>
+                    <li id="record">Correct: 0/0 (0%)</li>
+                    <li id="streak">Streak: 0</li>
+                    <li id="avg-time">Average time: 0s</li>
+                </ul>
+            </div>
+            <div id="right-container">
+                <p>
+                    <input id="start" type="button" value="Start" onclick="onClickStart()">
+                    <input id="reset" type="button" value="Reset" onclick="reset()">
+                </p>
+            </div>
+        </div>
+
+        <div id="middle-pane">
+            <p id="flashcard-text"></p>
+            <div id="flashcard-image-container">
+                <span class="spacer"></span>
+                <img id="flashcard-image">
+            </div>
+        </div>
+
+        <div id="lower-pane">
+            <p id="message">
+                Click "Start"!
+            </p>
+            <div id="buttons-container">
+                <p>
+                    <input id="raise" type="button" value="raise" onclick="raise()">
+                    <input id="check" type="button" value="check" onclick="check()">
+                    <input id="fold" type="button" value="fold" onclick="fold()">
+                </p>
+            </div>
+        </div>
+
+        <div id="edit-settings-pane">
+            <p>
+                <label for="autofail">Auto-fail in (seconds):</label>
+                <input id="autofail" size="4">
+            </p>
+
+            <p>
+                <label for="background">Change background colour:</label>
+                <input id="background" type="checkbox" checked="true">
+            </p>
+        </div>
+    </div> <!-- Closing the .container div properly -->
+</body>
+
+
+</html>

@@ -1,0 +1,69 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.game-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px; /* Restrict the maximum width */
+    text-align: center;
+}
+
+.poker-table-image {
+    width: 100%;
+    max-width: 900px; /* Set a maximum width for the poker table */
+    height: auto; /* Maintain aspect ratio */
+    position: relative;
+    display: block;
+    margin: auto;
+    z-index: 1; /* Ensure it's below the player images */
+}
+
+.table-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 900px; /* Match the poker table image width */
+    height: auto;
+    z-index: 2; /* Above the poker table image */
+    pointer-events: none; /* Ignore pointer events so player images don't interfere */
+}
+
+.player {
+    position: absolute;
+    width: 60px; /* Fixed size for player images */
+    height: 60px; /* Fixed size for player images */
+    z-index: 3; /* Ensure players are above the poker table */
+}
+.guess-container {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.timer, .question-number, .feedback, .button-wrapper {
+    margin-bottom: 10px;
+}
+
+.button-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.seat-label {
+    font-size: 14px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 3px 6px;
+    border-radius: 4px;
+    text-align: center;
+}

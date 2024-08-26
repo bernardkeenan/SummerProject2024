@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Difficulty</title>
+    <link rel="stylesheet" href="css/game1.css">
+</head>
+<body>
+    <button id="backButton">Back</button>
+    <h1>Select Difficulty</h1>
+    <button id="easyButton">Easy</button>
+    <button id="mediumButton" disabled>Medium</button>
+    <button id="hardButton" disabled>Hard</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load difficulty progress from localStorage
+            const difficultyProgress = JSON.parse(localStorage.getItem('difficultyProgress')) || {
+                Easy: true, // Assuming Easy is always unlocked
+                Medium: false,
+                Hard: false
+            };
+
+            // Set button enabled state based on difficulty progress
+            document.getElementById('mediumButton').disabled = !difficultyProgress.Medium;
+            document.getElementById('hardButton').disabled = !difficultyProgress.Hard;
+
+            // Redirect handlers for each button
+            document.getElementById('easyButton').addEventListener('click', () => {
+                window.location.href = 'easy.html';
+            });
+
+            document.getElementById('mediumButton').addEventListener('click', () => {
+                if (difficultyProgress.Medium) {
+                    window.location.href = 'medium.html';
+                } else {
+                    alert('Complete Easy mode to unlock Medium mode!');
+                }
+            });
+
+            document.getElementById('hardButton').addEventListener('click', () => {
+                if (difficultyProgress.Hard) {
+                    window.location.href = 'hard.html';
+                } else {
+                    alert('Complete Medium mode to unlock Hard mode!');
+                }
+            });
+
+            // Redirect for back button
+            document.getElementById('backButton').addEventListener('click', () => {
+                window.location.href = 'Menu.html'; // Redirect to menu or appropriate page
+            });
+        });
+    </script>
+</body>
+</html>
