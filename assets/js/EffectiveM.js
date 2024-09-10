@@ -66,6 +66,9 @@ function startNewQuestion() {
     // Select random blinds
     const [SB, BB, ante] = selectRandomBlind(blindsArray);
 
+    // Debugging output
+    console.log("SB:", SB, "BB:", BB, "Ante:", ante);
+
     // Upper limit of number of big blinds
     const UL = 50;
     // Minimum chip denomination
@@ -84,6 +87,9 @@ function startNewQuestion() {
     // Generate a random number of players between 2 and 9
     const No_players = Math.floor(Math.random() * 8) + 2;
 
+    // Debugging output
+    console.log("Number of Players:", No_players);
+
     // Calculate the M-value
     const M_value = BB + SB + (No_players * ante);
 
@@ -98,6 +104,9 @@ function startNewQuestion() {
     // Calculate the Effective M-score
     const Effective_M = Math.floor(M_score * (No_players / 9));
 
+    // Debugging output
+    console.log("Chip Stack:", Chip_stack, "M-score:", M_score, "Effective M-Score:", Effective_M);
+
     // Display the results
     document.getElementById("sb").textContent = SB;
     document.getElementById("bb").textContent = BB;
@@ -109,7 +118,7 @@ function startNewQuestion() {
     // Reset feedback and timer
     document.getElementById("feedback").textContent = "";
     clearInterval(timer);
-    let timeRemaining = 15; // Timer duration in seconds
+    let timeRemaining = 10; // Timer duration in seconds
     document.getElementById("timer").textContent = `Time remaining: ${timeRemaining} seconds`;
 
     // Start timer
@@ -129,6 +138,7 @@ function startNewQuestion() {
 
     // Handle user guess
     document.getElementById("checkGuess").onclick = function () {
+        clearInterval(timer); // Stop the timer when the user submits their guess
         const user_guess = parseInt(document.getElementById("userGuess").value, 10);
         const feedbackElement = document.getElementById("feedback");
 
@@ -151,4 +161,7 @@ function startNewQuestion() {
 }
 
 // Start the game
-document.addEventListener("DOMContentLoaded", startNewQuestion);
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM fully loaded and parsed");
+    startNewQuestion();
+});

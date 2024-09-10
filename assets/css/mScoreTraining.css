@@ -1,0 +1,111 @@
+﻿/* Resetting default margins and paddings */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Flexbox centering for the entire page */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #2c3e50; /* Dark background color */
+    font-family: Arial, sans-serif;
+    color: #ecf0f1; /* Light text color */
+}
+
+/* The container holding the content */
+.container {
+    background-color: #34495e; /* Slightly lighter background for the container */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Header styling */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ecf0f1;
+}
+
+/* Styling for the question info */
+.question-info p {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+/* User input area styling */
+.user-input {
+    margin: 20px 0;
+}
+
+/* Label styling */
+label {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Styling for the input field */
+input[type="number"] {
+    width: 100%; /* Input takes full width of its container */
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #2c3e50;
+    box-sizing: border-box;
+}
+
+/* General button styling */
+button {
+    padding: 10px 20px;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%; /* Buttons take full width */
+}
+
+    /* Disabled button styling */
+    button:disabled {
+        background-color: #95a5a6;
+        cursor: not-allowed;
+    }
+
+/* Feedback text styling */
+#feedback {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+/* Timer text styling */
+#timer {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #e74c3c;
+}
+
+/* Hover effects for buttons */
+button:hover {
+    background-color: #16a085;
+}
+
+.btn {
+    margin-top: 20px;
+    background-color: #3498db;
+}
+
+    .btn:hover {
+        background-color: #2980b9;
+    }

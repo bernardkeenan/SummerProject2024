@@ -122,7 +122,7 @@ function setupTable(difficulty) {
     // Set the size of the poker table image
     pokerTableImage.style.width = '900px'; // Wider
     pokerTableImage.style.height = '500px'; // Less tall
-    pokerTableImage.style.position = 'relative'; // Changed from absolute to relative
+    pokerTableImage.style.position = 'absolute'; // Changed from absolute to relative
     pokerTableImage.style.margin = 'auto'; // Center horizontally
 
     // Get the dimensions and position of the poker table
@@ -148,7 +148,7 @@ function setupTable(difficulty) {
 
         const img = document.createElement('img');
         img.classList.add('position-img');
-        img.src = i === playerIndex ? 'assets/img/userGuess.png' : 'assets/img/user.png';
+        img.src = i === playerIndex ? 'assets/images/userGuess.png' : 'assets/images/user.png';
 
         // Debugging: Check if image is loaded correctly
         img.onload = () => console.log(`Image ${img.src} loaded successfully`);

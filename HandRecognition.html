@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poker Hand Evaluator</title>
-    <link rel="stylesheet" href="css/HandRecogniton.css">
+    <link rel="stylesheet" href="assets/css/HandRecognition.css">
 </head>
 <body>
     <div class="container">
@@ -15,29 +15,15 @@
         <div class="player-cards" id="player-cards">
             <!-- The two player cards will be displayed here -->
         </div>
-        <div class="guess-section">
-            <label for="guess">Your Guess:</label>
-            <select id="guess">
-                <option value="High Card">High Card</option>
-                <option value="One Pair">One Pair</option>
-                <option value="Two Pair">Two Pair</option>
-                <option value="Three of a Kind">Three of a Kind</option>
-                <option value="Straight">Straight</option>
-                <option value="Flush">Flush</option>
-                <option value="Full House">Full House</option>
-                <option value="Four of a Kind">Four of a Kind</option>
-                <option value="Straight Flush">Straight Flush</option>
-                <option value="Royal Flush">Royal Flush</option>
-            </select>
-            <button id="submit-guess">Submit Guess</button>
+        <div class="guess-section" id="guess-section">
+            <!-- Guess buttons will be dynamically generated here -->
         </div>
         <div id="result">
             <h2>Best Hand:</h2>
             <p id="best-hand"></p>
             <p id="hand-name"></p>
-        </div>
-    </div>
-    <script src="js/HandRecognition.js"></script>
+        </div>  
+     </div>
+    <script src="assets/js/HandRecognition.js"></script>
 </body>
 </html>
-

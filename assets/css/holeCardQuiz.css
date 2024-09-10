@@ -1,0 +1,20 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+#question-container {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    margin-right: 10px;
+}
+
+#difficulty-container {
+    margin-bottom: 20px;
+}
+
+#score {
+    font-weight: bold;
+}
