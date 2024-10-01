@@ -1,20 +1,23 @@
-﻿/* Force colors and styles using !important */
+/* Reset and force styles */
 body {
-    background: #252525 !important; /* Dark gray background color */
+    background: #252525 !important; /* Dark gray background */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
+/* Main container */
 .menu-container {
+    position: relative;
     display: flex;
     justify-content: center;
-    gap: 30px;
-    position: relative;
+    align-items: center;
 }
 
-/* Main buttons - ensure they are solid colors */
+/* Main button styling */
 .main-btn, .train-btn {
     background-color: #474747 !important; /* Gray poker chip color */
     border: 5px solid white !important;
@@ -35,7 +38,7 @@ body {
     background-color: #B71C1C !important; /* Darker red on hover */
 }
 
-/* Train options */
+/* Train options (additional buttons) */
 .train-options {
     position: absolute !important;
     width: 100% !important;
@@ -50,7 +53,7 @@ body {
     transition: opacity 0.3s ease !important;
 }
 
-/* Train buttons - color updates */
+/* Styling for additional buttons */
 .train-btn {
     background-color: #1976D2 !important; /* Blue background for train buttons */
     border: 5px solid white !important;
@@ -63,7 +66,7 @@ body {
     position: absolute !important;
     transform: translate(0, 0) scale(0) !important;
     opacity: 0 !important;
-    transition: transform 0.6s ease, opacity 0.6s ease; 
+    transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
 .train-options.show .train-btn {
@@ -71,26 +74,50 @@ body {
     opacity: 1 !important;
 }
 
-/* Position the train options around the main button */
-#cards-btn {
-    top: -160px !important;
-    left: 160px !important;
+/* Correct Circular positioning around the Chips button (equidistant) */
+/* Top button - Big Blind */
+#option1-btn {
+    top: -70px !important; /* Move above the Chips button */
+    left: 0 !important;     /* Center horizontally */
     transition-delay: 0.1s !important;
 }
 
-#chips-btn {
-    top: 160px !important;
-    left: 160px !important;
+/* Bottom left button - M Score */
+#option2-btn {
+    top: 100px !important;  /* Below the Chips button */
+    left: -170px !important; /* Shift left for perfect circular positioning */
     transition-delay: 0.2s !important;
 }
 
-#position-btn {
-    top: 0 !important;
-    left: 300px !important;
+/* Bottom right button - Effective M */
+#option3-btn {
+    top: 100px !important;  /* Below the Chips button */
+    left: 170px !important;  /* Shift right for perfect circular positioning */
     transition-delay: 0.3s !important;
 }
 
-/* Hover effect for train buttons */
+/* Hover effect for additional buttons */
 .train-btn:hover {
     background-color: #0D47A1 !important; /* Darker blue on hover */
+}
+
+/* Back button styling */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px; 
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #474747;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+}
+
+.back-btn:hover {
+    background-color: #B71C1C; /* Darker red on hover */
 }

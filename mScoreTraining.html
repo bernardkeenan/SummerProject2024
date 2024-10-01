@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chip Stack and M-Score Calculator</title>
-    <link rel="stylesheet" href="css/mScoreTraining.css">
-  
+    <link rel="stylesheet" href="assets/css/mScoreTraining.css">
 </head>
-<body>
-    <div class="container">
-        <button id="backButton" class="btn">Back to menu</button>
+<body> 
+
+    <button id="backButton" class="back-btn">Back to menu</button>
+
+    <div class="outer-container">
+
+    <div class="mscore-container">
         <h1>Chip Stack and M-Score Calculator</h1>
         <div id="results">
             <p><strong>Small Blind:</strong> <span id="sb"></span></p>
@@ -20,7 +23,7 @@
             <p><strong>Question:</strong> <span id="questionCounter">1</span> / <span id="maxQuestions">10</span></p>
             <p id="timer">Time remaining: 15 seconds</p>
         </div>
-        <div id="guess-section">
+        <div id="input-container">
             <label for="userGuess">Guess the M-score: </label>
             <input type="number" id="userGuess" min="0">
             <button id="checkGuess">Check Guess</button>

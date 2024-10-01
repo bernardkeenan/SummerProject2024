@@ -14,6 +14,11 @@ const HAND_RANKS = {
     'Royal Flush': 10
 };
 
+let questionCounter = 0;
+const totalQuestions = 10;
+let timerInterval;
+let timeLeft = 15; // Countdown timer in seconds
+
 // Function to shuffle and deal cards
 function shuffleDeck() {
     let deck = [];
@@ -106,6 +111,7 @@ function displayCards(cards) {
 function createGuessButtons() {
     const handTypes = Object.keys(HAND_RANKS).map(hand => hand.toLowerCase().replace(/_/g, ' '));
     const guessSection = document.getElementById('guess-section');
+    guessSection.innerHTML = ''; // Clear previous buttons
     handTypes.forEach(hand => {
         const button = document.createElement('button');
         button.className = 'guess-button';
@@ -123,13 +129,68 @@ function handleGuessClick(guess) {
     const { bestHand, bestHandName } = determineBestHand(cards);
 
     const resultText = guess === bestHandName.toLowerCase() ? 'Correct!' : `Incorrect! The best hand is ${bestHandName}`;
-
     document.getElementById('best-hand').innerText = `Best Hand: ${bestHand.join(', ')}`;
     document.getElementById('hand-name').innerText = resultText;
+
+    clearInterval(timerInterval); // Stop the timer when the answer is selected
+
+    // Move to the next question after 2 seconds
+    setTimeout(nextQuestion, 2000);
+}
+
+// Function to handle the next question
+function nextQuestion() {
+    questionCounter++;
+    if (questionCounter > totalQuestions) {
+        // End game
+        document.getElementById('counter').innerText = `Game Over!`;
+        document.getElementById('guess-section').innerHTML = '';
+        return;
+    }
+
+    document.getElementById('counter').innerText = `Question ${questionCounter} of ${totalQuestions}`;
+    
+    // Shuffle the deck and display new cards
+    const deck = shuffleDeck();
+    const cards = deck.slice(0, 7);
+    displayCards(cards);
+    createGuessButtons(); // Recreate the buttons for the new round
+    hideFeedback(); // Hide feedback from the previous question
+    startTimer(); // Restart the timer for the next question
+}
+
+// Function to hide feedback after the next question is triggered
+function hideFeedback() {
+    document.getElementById('best-hand').innerText = '';
+    document.getElementById('hand-name').innerText = '';
+}
+
+// Function to start the countdown timer
+function startTimer() {
+    timeLeft = 15; // Reset the time left
+    document.getElementById('timer').innerText = `Time left: ${timeLeft} seconds`;
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer').innerText = `Time left: ${timeLeft} seconds`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            handleGuessClick(''); // Handle no answer being selected as incorrect
+        }
+    }, 1000);
 }
 
 // Initial setup
-const deck = shuffleDeck();
-const cards = deck.slice(0, 7);
-displayCards(cards);
-createGuessButtons();
+function startGame() {
+    questionCounter = 1;
+    document.getElementById('counter').innerText = `Question ${questionCounter} of ${totalQuestions}`;
+    const deck = shuffleDeck();
+    const cards = deck.slice(0, 7);
+    displayCards(cards);
+    createGuessButtons();
+    startTimer(); // Start the timer for the first question
+}
+
+// Start the game on page load
+window.onload = startGame;

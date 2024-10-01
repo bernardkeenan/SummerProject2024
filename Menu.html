@@ -1,55 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- ===== CSS ===== -->
-    <link rel="stylesheet" href="css/Menu.css">
-
-    <title>Menu</title>
+    <title>Poker Trainer Menu</title>
+    <link rel="stylesheet" href="assets/css/Menu.css"> <!-- Reference to external CSS file -->
 </head>
 <body>
-    <header class="header">
-        <a href="#" class="header__logo">Poker</a>
 
-        <ion-icon name="menu-outline" class="header__toggle" id="nav-toggle"></ion-icon>
+    <div class="menu-container">
+        <!-- Main buttons -->
+        <button id="play-btn" class="main-btn">Play</button>
 
-        <nav class="nav" id="nav-menu">
-            <div class="nav__content bd-grid">
+        <button id="train-btn" class="main-btn">Train</button>
 
-                <ion-icon name="close-outline" class="nav__close" id="nav-close"></ion-icon>
+        <!-- Train options -->
+        <div class="train-options">
+            <button id="cards-btn" class="train-btn">Cards</button>
+            <button id="chips-btn" class="train-btn">Chips</button>
+            <button id="position-btn" class="train-btn">Position</button>
+        </div>
+    </div>
 
-                <div class="nav__perfil">
-                    <div class="nav__image">
-                        <img src="image/poker.png" alt="image" height="30" width="30">
-                    </div>
-
-                    <div>
-                        <a href="#" class="nav__name">Poker</a>
-                        <span class="nav__profesion">Web designer</span>
-                    </div>
-                </div>
-
-                <div class="nav__menu">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a href="Home.html" class="nav__link active">Home</a></li>
-                        <li class="nav__item"><a href="BigBlindTraining.html" class="nav__link active">Big Blind Trainer</a></li>
-                        <li class="nav__item"><a href="mScoreTraining.html" class="nav__link">M Score Trainer</a></li>
-                        <li class="nav__item"><a href="EffectiveM.html" class="nav__link">Effective M Score Trainer</a></li>
-                        <li class="nav__item"><a href="PokerHandTraining.html" class="nav__link">Poker Hand Trainer</a></li>
-                        <li class="nav__item"><a href="game.html">Seat Trainer</a></li>      
-                        <li class="nav__item"><a href="HandRecognition.html" class="nav__link">Hand Recognition</a></li>
-                    </ul>
-                </div>                           
-            </div>
-        </nav>
-    </header>
-
-    <!-- ===== IONICONS ===== -->
-    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-
-    <!--===== MAIN JS =====-->
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/Menu.js"></script>
 </body>
 </html>

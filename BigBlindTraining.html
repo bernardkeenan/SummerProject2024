@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Big Blind Training</title>
-    <link rel="stylesheet" href="css/BigBlindTraining.css">
+    <link rel="stylesheet" href="assets/css/BigBlindTraining.css">
 </head>
 
-<body>
-    <div class="container">
+<body> 
+    
+    <button id="back-btn" class="back-btn">Back to Menu</button>
+
+    <div class="content-container">
         <!-- Back Button -->
-        <button id="backButton" class="btn">Back to menu</button>
+       
 
         <div id="difficultySelection">
             <h1>Select Difficulty</h1>
@@ -26,12 +29,11 @@
             <p>Time Remaining: <span id="timer"></span> seconds</p>
             <div>
                 <label for="userAnswer">Enter your answer:</label>
-                <input type="text" id="userAnswer">
+                <input type="text" id="userAnswer" autocomplete="off">
                 <button id="submitButton" class="btn">Submit</button>
             </div>
             <p id="feedback"></p>
-            <p>Question Number: <span id="questionCount">0</span></p>
-            <p>Average Time Per Question: <span id="avgTime">0</span> seconds</p>
+            <p>Question Number: <span id="questionCount">0</span>/10</p>
         </div>
 
         <!-- Training Results Section -->

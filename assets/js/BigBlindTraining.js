@@ -1,4 +1,4 @@
-let selectedDifficulty = '';
+let selectedDifficulty = ''; 
 let timeLimit = 0;
 let questionCount = 0;
 let correctAnswers = 0;
@@ -7,12 +7,22 @@ let timer = null;
 let questionStartTime = 0;
 let times = []; // Array to store time for each question
 
-document.getElementById('backButton').addEventListener('click', function () {
-    window.location.href = 'Menu.html'; // Redirect to Menu.html
+document.addEventListener('DOMContentLoaded', function() {
+    const backBtn = document.getElementById('back-btn');
+    
+    // Ensure the element is found
+    if (backBtn) {
+        backBtn.addEventListener('click', function() {
+            window.location.href = 'menu.html'; // Change to the actual menu page
+        });
+    }
 });
 
 // Function to handle difficulty selection
 function selectDifficulty(difficulty) {
+    // Hide the difficulty selection when a difficulty is chosen
+    document.getElementById('difficultySelection').style.display = 'none';
+
     if (difficulty === 'easy') {
         selectedDifficulty = 'easy';
         timeLimit = 8;
@@ -80,8 +90,9 @@ function generateQuestion() {
     const chipStack = calculateChipStack(BB);
     const correctAnswer = chipStack / BB;
 
-    document.getElementById('BigBlind').innerText = BB;
-    document.getElementById('ChipStack').innerText = chipStack;
+    // Set the Big Blind and Chip Stack values in the UI
+    document.getElementById('BigBlind').innerText = `${BB}`;
+    document.getElementById('ChipStack').innerText = `${chipStack}`;
 
     // Store the correct answer for checking later
     document.getElementById('gameSection').dataset.correctAnswer = correctAnswer;
@@ -134,29 +145,67 @@ function checkAnswer() {
     totalTime += timeForThisQuestion;
     times.push(timeForThisQuestion); // Store time for this question
 
+    // Check if the answer is correct
     if (userAnswer === correctAnswer) {
         correctAnswers++;
         document.getElementById('feedback').innerText = 'Correct!';
     } else {
-        document.getElementById('feedback').innerText = 'Incorrect!';
+        document.getElementById('feedback').innerText = `Incorrect! The answer was ${correctAnswer}.`;
     }
 
-    nextQuestion();
+    // Add a delay before moving to the next question
+    setTimeout(() => {
+        nextQuestion();
+    }, 2000); // 2-second delay before moving to the next question
 }
 
 function endTraining() {
     let averageTime = times.reduce((a, b) => a + b, 0) / times.length;
     document.getElementById('resultCorrectAnswers').innerText = `Correct Answers: ${correctAnswers}`;
-    document.getElementById('resultAverageTime').innerText = `Average Time Per Question: ${averageTime.toFixed(2)} seconds`;
+    document.getElementById('resultAverageTime').innerText = `Average Time Per Question: ${averageTime.toFixed(1)} seconds`;
 
+    // Hide the game section and show the results
     document.getElementById('gameSection').style.display = 'none';
     document.getElementById('resultsSection').style.display = 'block';
 
     // Enable the next difficulty level if the user answered enough questions correctly
     if (selectedDifficulty === 'easy' && correctAnswers >= 10) {
         document.getElementById('medium').disabled = false;
+        document.getElementById('medium').classList.remove('locked');
+        document.getElementById('medium').classList.add('unlocked');
     } else if (selectedDifficulty === 'medium' && correctAnswers >= 10) {
         document.getElementById('hard').disabled = false;
+        document.getElementById('hard').classList.remove('locked');
+        document.getElementById('hard').classList.add('unlocked');
+    }
+
+    // After showing results, return to the difficulty selection after a short delay
+    setTimeout(returnToDifficultySelection, 3000); // 3-second delay before returning to difficulty selection
+}
+
+function returnToDifficultySelection() {
+    // Hide the results section
+    document.getElementById('resultsSection').style.display = 'none';
+
+    // Show the difficulty selection section again
+    document.getElementById('difficultySelection').style.display = 'block';
+
+    // Reset the game state for future attempts
+    questionCount = 0;
+    correctAnswers = 0;
+    totalTime = 0;
+    times = []; // Reset times array
+
+    // Keep difficulty buttons visually locked or unlocked
+    if (selectedDifficulty !== 'easy' || correctAnswers < 10) {
+        document.getElementById('medium').disabled = true;
+        document.getElementById('medium').classList.add('locked');
+        document.getElementById('medium').classList.remove('unlocked');
+    }
+    if (selectedDifficulty !== 'medium' || correctAnswers < 10) {
+        document.getElementById('hard').disabled = true;
+        document.getElementById('hard').classList.add('locked');
+        document.getElementById('hard').classList.remove('unlocked');
     }
 }
 
