@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const easyButton = document.getElementById('easyButton');
     const mediumButton = document.getElementById('mediumButton');
     const hardButton = document.getElementById('hardButton');
+    const backButton = document.querySelector('.back-button'); // Select the back button using its class
 
     // Initialize difficulty status and check button states
     initializeDifficultyStatus();
@@ -27,6 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
         hardButton.addEventListener('click', () => {
             localStorage.setItem('selectedDifficulty', 'hard');
             window.location.href = 'hCqHard.html'; // Redirect to hard quiz page
+        });
+    }
+
+      // Add event listener for the back button
+      if (backButton) {
+        backButton.addEventListener('click', () => {
+            window.location.href = 'menu.html'; // Redirect to the main menu
         });
     }
 });

@@ -17,4 +17,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('option1-btn').addEventListener('click', function () {
         window.location.href = 'PositionTraining.html';
     });
+
+    // Redirect to hCqDifficultySelector.html
+    document.getElementById('option2-btn').addEventListener('click', function () {
+        window.location.href = 'RFI.html';
+    });
 });
+
+
