@@ -1,12 +1,6 @@
-# Responsive Navigation Menu Bar
-## [Watch it on youtube](https://youtu.be/1sBYOt3d1DA)
-### Responsive Navigation Menu Bar
+# Poker Buddy
 
-- Responsive Navigation Menu Bar Using HTML CSS & JavaScript
-- Include a profile picture and social media links.
-- Developed first with the Mobile First methodology, then for desktop.
-- Compatible with all mobile devices and with a beautiful and pleasant user interface.
+- WebApp built using JavaScript, HTML and CSS. 
+- Features several programs focused on fostering and retaining a thorough understanding of important poker theory.
+- This is a personal project, to enhance my skills in these coding languages, as well as logistical, and mathematical sharpness. 
 
-💙 Join the channel to see more videos like this. [Bedimcode](https://www.youtube.com/@Bedimcode)
-
-![preview img](/preview.png)
