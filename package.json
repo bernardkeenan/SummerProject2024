@@ -1,0 +1,51 @@
+{
+  "name": "summerproject2024",
+  "version": "1.0.0",
+  "description": "Poker Buddy App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YourUsername/SummerProject2024"
+  },
+  "author": "Bernard Keenan",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^32.2.0",
+    "electron-builder": "^23.0.0"
+  },
+  "build": {
+    "appId": "com.yourname.pokerbuddy",
+    "productName": "Poker Buddy",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "src/images/Icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "src/images/Icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "src/images/Icon.png"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "YourUsername",
+        "repo": "SummerProject2024"
+      }
+    ]
+  },
+  "dependencies": {
+    "electron-updater": "^6.3.9",
+    "electron-log": "^4.4.1"
+  }
+}

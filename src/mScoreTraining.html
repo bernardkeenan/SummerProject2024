@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chip Stack and M-Score Calculator</title>
+    <link rel="stylesheet" href="css/mScoreTraining.css">
+</head>
+<body> 
+
+    <button id="backButton" class="back-btn">Back to menu</button>
+
+    <div class="outer-container">
+
+    <div class="mscore-container">
+        <h1>Chip Stack and M-Score Calculator</h1>
+        <div id="results">
+            <p><strong>Small Blind:</strong> <span id="sb"></span></p>
+            <p><strong>Big Blind:</strong> <span id="bb"></span></p>
+            <p><strong>Ante:</strong> <span id="ante"></span></p>
+            <p><strong>Chip Stack:</strong> <span id="chipStack"></span></p>
+            <p><strong>Number of Players:</strong> <span id="numPlayers"></span></p>
+            <p>  </p>
+            <p id="timer">Time remaining: 15 seconds</p>
+            <p><strong>Question:</strong> <span id="questionCounter">1</span> / <span id="maxQuestions">10</span></p>
+        </div>
+        <div id="input-container">
+            <label for="userGuess">Guess the M-score: </label>
+            <input type="number" id="userGuess" min="0">
+            <button id="checkGuess">Check Guess</button>
+        </div>
+        <p id="feedback"></p>
+    </div>
+
+    <script src="js/mScoreTraining.js"></script>
+</body>
+</html>

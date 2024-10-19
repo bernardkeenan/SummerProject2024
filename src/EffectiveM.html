@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker M-Score Game</title>
+    <link rel="stylesheet" href="css/EffectiveM.css">
+</head>
+<body>
+    
+    <button id="backButton" class="back-btn">Back to Menu</button>
+
+    <div class="container">
+        <h1>Poker Effective M-Score Calculator</h1>
+
+        <div class="question-info">
+            <p>Question <span id="questionCounter">1</span> of 10</p>
+            <p>Small Blind: <span id="sb">--</span></p>
+            <p>Big Blind: <span id="bb">--</span></p>
+            <p>Ante: <span id="ante">--</span></p>
+            <p>Number of Players: <span id="numPlayers">--</span></p>
+            <p>Chip Stack: <span id="chipStack">--</span></p>
+        </div>
+
+        <div class="user-input">
+            <label for="userGuess">Enter your guess for the Effective M-score:</label>
+            <input type="number" id="userGuess" name="userGuess" required>
+            <button id="checkGuess">Submit Guess</button>
+        </div>
+
+        <p id="feedback"></p>
+        <p id="timer">Time remaining: 15 seconds</p>
+
+        
+    </div>
+
+    <script src="js/EffectiveM.js"></script>
+</body>
+</html>
